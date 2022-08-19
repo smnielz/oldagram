@@ -51,14 +51,16 @@ function load(){
     for(let i = 0; i < posts.length; i++)
     {
         let img = ""
+        let numLikes = 0
         if(localStorage.getItem(i)){            
             img = "images/icon-liked.png"
             clicks[i] = true
-            posts[i].likes = localStorage.getItem(i)
+            numLikes = localStorage.getItem(i)
         }
         else{
             img = "images/icon-heart.png"
             clicks[i] = false
+            numLikes = posts[i].likes
         }
         string += ` 
         <div class="user-info-div">
@@ -80,7 +82,7 @@ function load(){
                 <img src="images/icon-dm.png">
             <button>
         </div>
-        <p id="likes${i}" class="likes-p"> ${posts[i].likes} likes</p>
+        <p id="likes${i}" class="likes-p"> ${numLikes} likes</p>
         <p><span class="likes-p">${posts[i].username}</span> ${posts[i].comment}</p>        
     `
     }
@@ -119,7 +121,7 @@ function changeLikes(value){
         localStorage.setItem(value, JSON.stringify(posts[value].likes + 1))
     }
     else{
-        likesP[value].innerHTML = `${posts[value].likes - 1} likes`
+        likesP[value].innerHTML = `${posts[value].likes} likes`
         btns[value].innerHTML = `<img id="icon-heart" src="images/icon-heart.png">`
         localStorage.removeItem(value)
     }    
