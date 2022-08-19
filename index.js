@@ -29,7 +29,10 @@ const posts = [
 ]
 
 const section = document.getElementById("section")
+let clicks = [false, false, false]
+
 load()
+
 const btnLikes0 = document.getElementById("likes-btn0")
 const btnLikes1 = document.getElementById("likes-btn1")
 const btnLikes2 = document.getElementById("likes-btn2")
@@ -43,12 +46,20 @@ const postImg2 = document.getElementById("post-img2")
 let btns = [btnLikes0, btnLikes1, btnLikes2]
 let likesP = [likesP0, likesP1, likesP2]
 
-let clicks = [false, false, false]
-
 function load(){
     let string = ""
     for(let i = 0; i < posts.length; i++)
     {
+        let img = ""
+        if(localStorage.getItem(i)){            
+            img = "images/icon-liked.png"
+            clicks[i] = true
+            posts[i].likes = localStorage.getItem(i)
+        }
+        else{
+            img = "images/icon-heart.png"
+            clicks[i] = false
+        }
         string += ` 
         <div class="user-info-div">
             <img class="avatar-img" src=${posts[i].avatar}>
@@ -60,7 +71,7 @@ function load(){
         <img id="post-img${i}" class="post-img" src=${posts[i].post}>
         <div class="icon-div">
             <button id="likes-btn${i}">
-                <img id="icon-heart" src="images/icon-heart.png">
+                <img id="icon-heart" src=${img}>
             </button>
             <button>
                 <img src="images/icon-comment.png">
@@ -105,9 +116,11 @@ function changeLikes(value){
     if(clicks[value]){
         likesP[value].innerHTML = `${posts[value].likes + 1} likes`
         btns[value].innerHTML = `<img id="icon-heart" src="images/icon-liked.png">`
+        localStorage.setItem(value, JSON.stringify(posts[value].likes + 1))
     }
     else{
-        likesP[value].innerHTML = `${posts[value].likes} likes`
+        likesP[value].innerHTML = `${posts[value].likes - 1} likes`
         btns[value].innerHTML = `<img id="icon-heart" src="images/icon-heart.png">`
-    }
+        localStorage.removeItem(value)
+    }    
 }

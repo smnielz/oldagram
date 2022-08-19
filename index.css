@@ -14,7 +14,7 @@ header{
 }
 header,
 section{
-    width: 375px;
+    width: 70%;
     margin: 0 auto;
     padding: 0px;
 }
