@@ -1,0 +1,92 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Source Sans Pro';
+    font-weight: 400;
+    font-size: 13px;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;    
+    background: #FFFFFF;
+    border-bottom: 1px solid #C6C6C6;
+}
+header,
+section{
+    width: 375px;
+    margin: 0 auto;
+    padding: 0px;
+}
+.logo-img{
+    width: 127px;
+    height: 33px;
+}
+
+.user-avatar-img,
+.avatar-img{
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+}
+
+.logo-img,
+.user-avatar-img{
+    padding: 16px;
+}
+.user-info-div,
+.icon-div{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+
+.user-info-p{
+    margin: 0 7px;
+}
+
+.username{    
+    font-weight: 700;
+    line-height: 16px;
+    color: #000000;
+}
+
+.location{
+    font-size: 12px;
+}
+
+.post-img{
+    width: 100%;
+}
+
+.post-img:hover{
+    opacity: 0.9;
+}
+
+.icon-div img{
+    width: 22px;
+}
+
+.likes-p{
+    font-weight: 700;
+    
+    margin-top: 0px;
+}
+p{
+    margin-left: 13px;
+}
+
+.btn{
+    border: none;
+}
+button:hover,
+.post-img:active{
+     opacity: 0.2;
+}
+
+button{
+    border: none;
+    background: white;
+    margin-right: 10px;
+}
